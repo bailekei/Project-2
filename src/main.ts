@@ -3,7 +3,6 @@ import { RandomUser, User, Shows, RandomShows } from "./datatypes";
 
 const limitInput: Element | null = document.getElementById("input1");
 const genreInput: Element | null = document.getElementById("input2");
-const fLimit = (limitInput as HTMLInputElement)?.value ?? 10;
 const fetchBtn = document.getElementById("btn1");
 const genreBtn = document.getElementById("btn2");
 const myTable = document.getElementById("mars");
@@ -12,7 +11,7 @@ const myTable = document.getElementById("mars");
 fetchBtn?.addEventListener("click", () => {
   console.log("Clicked");
   removeOldData();
-  fetchsomeNewData(fLimit);
+  fetchsomeNewData();
 });
 genreBtn?.addEventListener("click", () => {
   searchData();
@@ -46,10 +45,11 @@ function searchData() {
   }
 }
 
-function fetchsomeSearchedNewData(fetchLimit:string) {
+function fetchsomeSearchedNewData() {
   // Use the user input to control the number of random users to fetch
+  const fLimit = (limitInput as HTMLInputElement)?.value ?? 10;
   const genreval = ((genreInput as HTMLInputElement)?.value.toUpperCase());
-  let val = Number(fetchLimit);
+  let val = Number(fLimit);
   let k=0;
   while(k<val){
 
@@ -57,7 +57,7 @@ function fetchsomeSearchedNewData(fetchLimit:string) {
     .request({
       method: "GET",
       url: "https://api.tvmaze.com/shows/" + Math.floor(Math.random()*100).toString(),
-      params: { results: fetchLimit },
+      params: { results: fLimit },
     })
     .then((r: AxiosResponse) => r.data)
     .then((ru: Shows) => {
@@ -86,14 +86,14 @@ function fetchsomeSearchedNewData(fetchLimit:string) {
         image.setAttribute("src", ru.image.medium);
         photoCell.appendChild(image);}
         else{
-          fetchOneData(fetchLimit);
+          fetchOneData(fLimit);
         }
         // k=k+1;
 
     }) .catch((e:any) => {
       console.log("This value doesn't work");
       removeOldData();
-      fetchsomeNewData(fetchLimit);
+      fetchsomeNewData();
       
       });
       k=k+1;
@@ -146,18 +146,19 @@ function fetchOneData(fetchLimit:string) {
       });
 }
 
-function fetchsomeNewData(fetchLimit:string) {
+function fetchsomeNewData() {
   // Use the user input to control the number of random users to fetch
+  const fLimit = (limitInput as HTMLInputElement)?.value ?? 10;
   const genreval = ((genreInput as HTMLInputElement)?.value.toUpperCase());
-  let val = Number(fetchLimit);
-  let k=0;
-  while(k<val){
+  let val = Number(fLimit);
+  console.log(val);
+  for(let k=0; k<val;k++){
 
   axios
     .request({
       method: "GET",
       url: "https://api.tvmaze.com/shows/" + Math.floor(Math.random()*100).toString(),
-      params: { results: fetchLimit },
+      params: { results: fLimit },
     })
     .then((r: AxiosResponse) => r.data)
     .then((ru: Shows) => {
@@ -188,12 +189,12 @@ function fetchsomeNewData(fetchLimit:string) {
 
     }) .catch((e:any) => {
       console.log("This value doesn't work");
+      console.log(val);
       removeOldData();
-      fetchsomeNewData(fetchLimit);
+      fetchsomeNewData();
       
       });
-      k=k+1;
     }
 }
 
-fetchsomeNewData(fLimit);
+fetchsomeNewData();
