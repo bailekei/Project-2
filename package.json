@@ -1,0 +1,25 @@
+{
+  "name": "webapi",
+  "version": "1.0.0",
+  "description": "To run:",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.4.1"
+  },
+  "dependencies": {
+    "@types/jquery": "^3.5.14",
+    "axios": "^0.26.0",
+    "jquery": "^3.6.0",
+    "source-map": "^0.7.3"
+  },
+  "type": "module",
+  "alias": {
+    "process": false
+  },
+  "main": "index.js"
+}

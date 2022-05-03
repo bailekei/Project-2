@@ -1,0 +1,44 @@
+table {
+  width: 50%;
+  font-style: bold;
+  color: #fff;
+  border: 2px solid #fafafd13;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  font: 16px / 26px Georgia, Garamond, serif;
+}
+
+input:checked {
+  background-color: #bc8f8f;
+}
+
+table tr:nth-child(2n+1) {
+  background-color: #0300ad79;
+}
+
+table tr > td:last-of-type {
+  background-color: #fff0;
+}
+
+table tr:nth-child(2n) {
+  background-color: #00000050;
+}
+
+table tr:first-child {
+  background-color: #ccc;
+}
+
+code {
+  font-size: 125%;
+}
+
+body {
+  background-image: url("https://media.giphy.com/media/cKawkWk1Vg7MgaS0aV/giphy.gif");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/*# sourceMappingURL=index.9a63277e.css.map */
